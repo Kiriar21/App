@@ -10,7 +10,7 @@ include("connect.php");
               if(mysqli_num_rows($resultat1)){
                   while($row1 = mysqli_fetch_array($resultat1)){
                       if(isset($_COOKIE["file".$row1[1]]) && $_COOKIE["file".$row1[1]]!=""){
-                          $ask3='LOAD DATA INFILE "C:/Users/Kiriar/Downloads/'.$_COOKIE['file'.$row1[1]].'" IGNORE INTO TABLE '.$row1[1].'meta CHARACTER SET "cp1250" FIELDS TERMINATED BY ",";';
+                          $ask3='LOAD DATA INFILE "C:/Users/puste/Downloads/'.$_COOKIE['file'.$row1[1]].'" IGNORE INTO TABLE '.$row1[1].'meta CHARACTER SET "cp1250" FIELDS TERMINATED BY ",";';
                           mysqli_query($conn1,$ask3);
                         }
                     } 
