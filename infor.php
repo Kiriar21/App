@@ -13,7 +13,7 @@ if($resultat = mysqli_query($conn1,$ask10)){
     }
 }
 if(isset($_POST['fileEventUsers'])){
-    $ask4='LOAD DATA INFILE "C:/Users/Kiriar/Downloads/'.$_POST['fileEventUsers'].'" IGNORE INTO TABLE dane CHARACTER SET "cp1250" FIELDS TERMINATED BY "\t";';
+    $ask4='LOAD DATA INFILE "C:/Users/puste/Downloads/'.$_POST['fileEventUsers'].'" IGNORE INTO TABLE dane CHARACTER SET "cp1250" FIELDS TERMINATED BY "\t";';
     if(mysqli_query($conn1,$ask4)){
         $ask5="CREATE TABLE klasyfikacje (
             `id` INT NOT NULL AUTO_INCREMENT,
