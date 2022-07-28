@@ -24,7 +24,7 @@ $ask="SELECT * from klasyfikacje";
             while($row1 = mysqli_fetch_array($resultat1)){
                 if(isset($_POST["file".$row1[1]]) && $_POST["file".$row1[1]]!=""){
                     $name=$_POST["file".$row1[1]];
-                    $ask3='LOAD DATA INFILE "C:/Users/Kiriar/Downloads/'.$name.'" IGNORE INTO TABLE '.$row1[1].'meta CHARACTER SET "cp1250" FIELDS TERMINATED BY ",";';
+                    $ask3='LOAD DATA INFILE "C:/Users/puste/Downloads/'.$name.'" IGNORE INTO TABLE '.$row1[1].'meta CHARACTER SET "cp1250" FIELDS TERMINATED BY ",";';
                     mysqli_query($conn1,$ask3);
                 }
             }
