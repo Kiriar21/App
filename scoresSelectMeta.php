@@ -43,16 +43,14 @@ include("connect.php");
         $numberRuner1='';
     }
     echo(" $_COOKIE[titl] - Klasyfikacja Ogólna");
-    $ask="SELECT dane.nr_zawodnika, concat(dane.imie,' ',dane.nazwisko), dane.wiek, dane.miasto, dane.nazwa_klubu, $_COOKIE[nmMeta]wynik.wynik FROM dane JOIN $_COOKIE[nmMeta]wynik ON dane.nr_chip=$_COOKIE[nmMeta]wynik.nr_chip WHERE dane.status_oplaty='Opłacony' AND dane.status_zawodnika='Udział' $numberRuner1 GROUP BY $_COOKIE[nmMeta]wynik.nr_chip ORDER BY $_COOKIE[nmMeta]wynik.wynik ";
+    $ask="SELECT dane.nr_zawodnika, concat(dane.imie,' ',dane.nazwisko), dane.wiek, dane.miasto, dane.nazwa_klubu, $_COOKIE[nmMeta]wynik.wynik, $_COOKIE[nmMeta]wynik.id  FROM dane JOIN $_COOKIE[nmMeta]wynik ON dane.nr_chip=$_COOKIE[nmMeta]wynik.nr_chip WHERE dane.status_oplaty='Opłacony' AND dane.status_zawodnika='Udział' $numberRuner1 GROUP BY $_COOKIE[nmMeta]wynik.nr_chip ORDER BY $_COOKIE[nmMeta]wynik.wynik ";
     if($resultat = mysqli_query($conn1,$ask)){
         if(mysqli_num_rows($resultat)){
-            $counter=1;
             echo("<table><tr><th>Miejsce</th><th>Nr</th><th>Biegacz</th><th>Wiek</th><th>Miasto</th><th>Nazwa Klubu</th><th>Meta</th></tr>");
             while($row = mysqli_fetch_array($resultat)){
                 echo("<tr>");
-                echo("<td>$counter</td><td>$row[0]</td><td>$row[1]</td><td>$row[2]</td><td>$row[3]</td><td>$row[4]</td><td>$row[5]</td>");
+                echo("<td>$row[6]</td><td>$row[0]</td><td>$row[1]</td><td>$row[2]</td><td>$row[3]</td><td>$row[4]</td><td>$row[5]</td>");
                 echo("</tr>");
-                $counter++;
             }
             echo("</table>");
         }
