@@ -22,7 +22,7 @@ include("connect.php");
                     while($row=mysqli_fetch_array($res)){
                         $ask4="TRUNCATE $row[1]wynik ";
                         mysqli_query($conn1,$ask4);
-                        $ask3="SELECT dane.nr_chip, dane.dateMeta, $row[1]meta.czas_meta ,dane.dateMeta, tytul.data FROM `dane` JOIN $row[1]meta ON dane.nr_chip=$row[1]meta.nr_chip JOIN klasyfikacje JOIN tytul WHERE nr_zawodnika!=0 AND klasyfikacja='$row[1]' AND klasyfikacje.impulsMeta='$row[3]' AND $row[1]meta.impuls='$row[3]' GROUP BY dane.nr_zawodnika;";
+                        $ask3="SELECT dane.nr_chip, dane.dateMeta, $row[1]meta.czas_meta ,dane.dateMeta, tytul.data FROM `dane` JOIN $row[1]meta ON dane.nr_chip=$row[1]meta.nr_chip JOIN klasyfikacje JOIN tytul WHERE nr_zawodnika!=0 AND klasyfikacja='$row[1]' AND klasyfikacje.impulsMeta='$row[3]' AND $row[1]meta.impuls='$row[3]'  GROUP BY dane.nr_zawodnika ORDER BY $row[1]meta.czas_meta ASC";
                         if($resultat2 = mysqli_query($conn1,$ask3)){
                             if(mysqli_num_rows($resultat2)){
                                 while($row2 = mysqli_fetch_array($resultat2)){
@@ -38,17 +38,16 @@ include("connect.php");
                     }
                 }
             }        
-                  
     ?>
 </form>
 <div id="progressBar"></div>
-<progress id='prbar' value='0' max='29'></progress>
+<progress id='prbar' value='0' max='19'></progress>
 
 <script>
     function autoref(){
         var meta = document.createElement('meta');
         meta.httpEquiv = "refresh";
-        meta.content = '30';
+        meta.content = '20';
         document.getElementsByTagName('head')[0].appendChild(meta);
         return true;
     };    
@@ -57,7 +56,7 @@ include("connect.php");
 </script>
 <script>
 var prBar=1;
-var timeleft = 30;
+var timeleft = 20;
 var downloadTimer = setInterval(function(){
 var now=1;
 var distance=timeleft-now;
